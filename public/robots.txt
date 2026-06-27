@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: http://localhost:5173/sitemap.xml
+Sitemap: https://basa-prasad-portfolio.vercel.app/sitemap.xml

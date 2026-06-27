@@ -13,8 +13,8 @@ const PROJECTS = [
     solution: 'Engineered clean REST endpoints in NestJS using TypeScript, configured PostgreSQL database schemas, and managed state on the frontend using React Context.',
     features: ['JWT Multi-Role Auth', 'Responsive React Dashboard', 'Type-Safe NestJS Backend', 'PostgreSQL DB Integration'],
     technologies: ['React.js', 'NestJS', 'TypeScript', 'Node.js', 'PostgreSQL', 'Tailwind CSS'],
-    github: 'https://github.com/maniprasad76/maniprasad76',
-    demo: 'mailto:basaprasad76@gmail.com',
+    github: 'https://github.com/maniprasad76/portfolio',
+    demo: 'https://basa-prasad-portfolio.vercel.app/',
     image: 'https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&q=80&w=800', // backup placeholder
     localImg: '/portfolio_thumbnail.png',
   },
@@ -26,23 +26,10 @@ const PROJECTS = [
     solution: 'Wrote robust Node.js automation scripts to parse Google Sheets data, validate fields, and synchronize folder trees in Google Drive.',
     features: ['Auto Data Integrity Auditing', 'Node.js Sync Scripts', '500+ Entries Checked', 'Secure OAuth Google Drive API'],
     technologies: ['Node.js', 'MS Excel', 'Google Sheets API', 'JSON Scripting'],
-    github: 'https://github.com/maniprasad76/maniprasad76',
-    demo: 'mailto:basaprasad76@gmail.com',
+    github: 'https://github.com/maniprasad76/portfolio',
+    demo: 'https://github.com/maniprasad76/portfolio',
     image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800',
     localImg: '/data_entry_thumbnail.png',
-  },
-  {
-    title: 'BPO Customer Support Simulation',
-    category: 'Customer Experience & Admin',
-    description: 'A simulated workflow practice encompassing multi-channel email/chat support, ticket handling on Freshdesk, and standard operating procedures.',
-    challenge: 'Maintaining response times under 5 minutes and high satisfaction scores while managing complex escalation queries.',
-    solution: 'Drafted 50+ custom professional email response templates covering standard BPO SOPs, practicing rapid ticket logging and resolution workflows.',
-    features: ['50+ Professional Templates', 'Freshdesk CS Certified', '35+ WPM Verified Speed', 'Escalation Protocol Logic'],
-    technologies: ['Freshdesk (Free Tier)', 'Zendesk (Basic)', 'Fast Typing (10FastFingers)', 'Email Management'],
-    github: 'https://github.com/maniprasad76/maniprasad76',
-    demo: 'mailto:basaprasad76@gmail.com',
-    image: 'https://images.unsplash.com/photo-1549923746-c502d488b3ea?auto=format&fit=crop&q=80&w=800',
-    localImg: '/support_thumbnail.png',
   },
 ];
 
@@ -50,7 +37,6 @@ export const Projects: React.FC = () => {
   const [activeDetails, setActiveDetails] = useState<Record<number, 'overview' | 'challenge'>>({
     0: 'overview',
     1: 'overview',
-    2: 'overview',
   });
 
   const toggleDetails = (idx: number) => {
@@ -112,8 +98,9 @@ export const Projects: React.FC = () => {
                     alt={project.title}
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                     onError={(e) => {
-                      // fallback to unsplash image if local isn't loaded
-                      (e.target as HTMLImageElement).src = project.image;
+                      const img = e.target as HTMLImageElement;
+                      img.onerror = null;
+                      img.src = `https://placehold.co/800x450/1B1B1B/F62440?text=${encodeURIComponent(project.title)}`;
                     }}
                   />
                   <div className="absolute inset-0 bg-charcoal/10 group-hover:bg-charcoal/0 transition-colors duration-500" />

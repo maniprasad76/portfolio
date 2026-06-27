@@ -136,7 +136,7 @@ export const Skills: React.FC = () => {
                           {skill.name}
                         </span>
                         {'level' in skill && (
-                          <span className="text-xs font-medium text-charcoal/50 ml-1 border-l border-charcoal/10 pl-3 whitespace-nowrap">
+                          <span className="text-xs font-medium text-charcoal/65 ml-1 border-l border-charcoal/10 pl-3 whitespace-nowrap">
                             {skill.level}
                           </span>
                         )}

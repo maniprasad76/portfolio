@@ -20,11 +20,47 @@
     -moz-osx-font-smoothing: grayscale;
   }
 
-  /* Hide default cursor on desktop devices to enable custom cursor */
-  @media (pointer: fine) {
+  /* Hide default cursor ONLY on desktop AND only when user hasn't opted for reduced motion */
+  @media (pointer: fine) and (prefers-reduced-motion: no-preference) {
     body, a, button, input, textarea, [role="button"], select {
       cursor: none !important;
     }
+  }
+
+  /* Accessible skip-to-content link */
+  .skip-to-content {
+    position: fixed;
+    top: -100%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 99999;
+    padding: 12px 24px;
+    background-color: #F62440;
+    color: #FFFAF3;
+    font-weight: 700;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    border-radius: 0 0 12px 12px;
+    text-decoration: none;
+    transition: top 0.2s ease;
+  }
+  
+  .skip-to-content:focus {
+    top: 0;
+    outline: none;
+  }
+
+  /* Visible focus indicators for keyboard navigation */
+  *:focus-visible {
+    outline: 2px solid #F62440;
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+  
+  /* Remove outline for mouse users */
+  *:focus:not(:focus-visible) {
+    outline: none;
   }
 }
 
@@ -40,6 +76,18 @@
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
     border-bottom: 1px solid rgba(27, 27, 27, 0.05);
+  }
+
+  /* Scroll progress bar at the top */
+  .scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #F62440, #ff6b6b);
+    z-index: 9999;
+    transform-origin: left;
+    transition: none;
   }
 }
 
@@ -86,6 +134,16 @@ html.lenis, html.lenis body {
 
 .lenis.lenis-scrolling iframe {
   pointer-events: none;
+}
+
+/* Reduced motion: disable all animations and transitions */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 /* Custom styles for printing resume */

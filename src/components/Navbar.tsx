@@ -1,23 +1,35 @@
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X } from 'lucide-react';
-import { MagneticButton } from './MagneticButton';
+import React, { useState, useEffect, useCallback } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Menu, X } from "lucide-react";
+import { MagneticButton } from "./MagneticButton";
 
 const NAV_LINKS = [
-  { label: 'Home', target: '#home' },
-  { label: 'About', target: '#about' },
-  { label: 'Skills', target: '#skills' },
-  { label: 'Projects', target: '#projects' },
-  { label: 'Experience', target: '#experience' },
-  { label: 'Education', target: '#education' },
-  { label: 'Contact', target: '#contact' },
-  { label: 'Resume', target: '/resume.pdf', isExternal: true },
+  { label: "Home", target: "#home" },
+  { label: "About", target: "#about" },
+  { label: "Skills", target: "#skills" },
+  { label: "Projects", target: "#projects" },
+  { label: "Experience", target: "#experience" },
+  { label: "Education", target: "#education" },
+  { label: "Contact", target: "#contact" },
+  { label: "Resume", target: "#resume" },
 ];
 
 export const Navbar: React.FC = () => {
-  const [activeSection, setActiveSection] = useState('home');
+  const [activeSection, setActiveSection] = useState("home");
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isMobileMenuOpen]);
 
   useEffect(() => {
     // Scroll event listener to add background shadow/opacity
@@ -25,12 +37,12 @@ export const Navbar: React.FC = () => {
       setIsScrolled(window.scrollY > 50);
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
 
     // Intersection Observer for active section highlighting
     const observerOptions = {
       root: null,
-      rootMargin: '-30% 0px -60% 0px', // Trigger when section occupies the middle third of screen
+      rootMargin: "-30% 0px -60% 0px", // Trigger when section occupies the middle third of screen
       threshold: 0,
     };
 
@@ -42,72 +54,76 @@ export const Navbar: React.FC = () => {
       });
     };
 
-    const observer = new IntersectionObserver(observerCallback, observerOptions);
+    const observer = new IntersectionObserver(
+      observerCallback,
+      observerOptions,
+    );
 
     NAV_LINKS.forEach((link) => {
-      if (!link.isExternal) {
-        const el = document.querySelector(link.target);
-        if (el) observer.observe(el);
-      }
+      const el = document.querySelector(link.target);
+      if (el) observer.observe(el);
     });
 
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("scroll", handleScroll);
       observer.disconnect();
     };
   }, []);
 
-  const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, target: string) => {
-    e.preventDefault();
-    const element = document.querySelector(target);
-    if (element) {
-      // Direct scroll element
-      element.scrollIntoView({ behavior: 'smooth' });
-      setIsMobileMenuOpen(false);
-    }
-  };
+  const handleLinkClick = useCallback(
+    (e: React.MouseEvent<HTMLAnchorElement>, target: string) => {
+      e.preventDefault();
+      const element = document.querySelector(target);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+        setIsMobileMenuOpen(false);
+      }
+    },
+    [],
+  );
 
   return (
     <>
       <header
+        role="banner"
         className={`fixed top-0 left-0 w-full z-[999] transition-all duration-300 ${
           isScrolled
-            ? 'glass-nav py-4 shadow-sm'
-            : 'bg-transparent py-6 border-b border-transparent'
+            ? "glass-nav py-4 shadow-sm"
+            : "bg-transparent py-6 border-b border-transparent"
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 md:px-12 flex justify-between items-center">
           {/* Logo */}
           <a
             href="#home"
-            onClick={(e) => handleLinkClick(e, '#home')}
+            onClick={(e) => handleLinkClick(e, "#home")}
             className="flex items-center gap-2 group"
             data-cursor="pointer"
+            aria-label="Basa Prasad - Home"
           >
-            <span className="font-display font-bold text-xl md:text-2xl tracking-tighter text-[#1B1B1B]">
-              BASA<span className="text-[#F62440]">.</span>P
+            <span className="font-display font-bold text-xl md:text-2xl tracking-tighter text-dark">
+              BASA<span className="text-accent">.</span>P
             </span>
           </a>
 
           {/* Desktop Navigation Links */}
-          <nav className="hidden lg:flex items-center gap-1">
+          <nav className="hidden lg:flex items-center gap-1" aria-label="Main navigation">
             {NAV_LINKS.map((link) => {
-              const isActive = !link.isExternal && activeSection === link.target.substring(1);
+              const isActive = activeSection === link.target.substring(1);
               return (
                 <a
                   key={link.label}
                   href={link.target}
-                  onClick={(e) => {
-                    if (!link.isExternal) handleLinkClick(e, link.target);
-                  }}
-                  target={link.isExternal ? '_blank' : undefined}
-                  rel={link.isExternal ? 'noopener noreferrer' : undefined}
+                  onClick={(e) => handleLinkClick(e, link.target)}
                   className="px-4 py-2 text-sm font-medium tracking-wide relative group"
                   data-cursor="pointer"
+                  aria-current={isActive ? "true" : undefined}
                 >
                   <span
                     className={`transition-colors duration-300 relative z-10 ${
-                      isActive ? 'text-[#FFFAF3]' : 'text-[#1B1B1B] group-hover:text-[#F62440]'
+                      isActive
+                        ? "text-cream"
+                        : "text-dark group-hover:text-accent"
                     }`}
                   >
                     {link.label}
@@ -116,8 +132,12 @@ export const Navbar: React.FC = () => {
                   {isActive && (
                     <motion.span
                       layoutId="activeNavBg"
-                      className="absolute inset-0 bg-[#F62440] rounded-full z-0"
-                      transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                      className="absolute inset-0 bg-accent rounded-full z-0"
+                      transition={{
+                        type: "spring",
+                        stiffness: 380,
+                        damping: 30,
+                      }}
                     />
                   )}
                 </a>
@@ -130,8 +150,8 @@ export const Navbar: React.FC = () => {
             <MagneticButton>
               <a
                 href="#contact"
-                onClick={(e) => handleLinkClick(e, '#contact')}
-                className="px-6 py-2.5 bg-[#1B1B1B] text-[#FFFAF3] rounded-full text-xs font-semibold uppercase tracking-wider hover:bg-[#F62440] transition-colors duration-300"
+                onClick={(e) => handleLinkClick(e, "#contact")}
+                className="px-6 py-2.5 bg-dark text-cream rounded-full text-xs font-semibold uppercase tracking-wider hover:bg-accent transition-colors duration-300"
                 data-cursor="pointer"
               >
                 Hire Me
@@ -143,8 +163,10 @@ export const Navbar: React.FC = () => {
           <div className="lg:hidden flex items-center">
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              aria-label="Toggle navigation menu"
-              className="text-[#1B1B1B] p-2 hover:text-[#F62440] transition-colors duration-300"
+              aria-label={isMobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+              aria-expanded={isMobileMenuOpen}
+              aria-controls="mobile-menu"
+              className="text-dark p-2 hover:text-accent transition-colors duration-300"
               data-cursor="pointer"
             >
               {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -157,15 +179,18 @@ export const Navbar: React.FC = () => {
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
+            id="mobile-menu"
+            role="dialog"
+            aria-label="Navigation menu"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 top-[72px] bg-[#FFFAF3] z-[998] px-6 py-12 flex flex-col justify-between"
+            className="fixed inset-0 top-[72px] bg-cream z-[998] px-6 py-12 flex flex-col justify-between"
           >
-            <nav className="flex flex-col gap-6 items-center">
+            <nav className="flex flex-col gap-6 items-center" aria-label="Mobile navigation">
               {NAV_LINKS.map((link, i) => {
-                const isActive = !link.isExternal && activeSection === link.target.substring(1);
+                const isActive = activeSection === link.target.substring(1);
                 return (
                   <motion.a
                     initial={{ opacity: 0, y: 15 }}
@@ -173,14 +198,11 @@ export const Navbar: React.FC = () => {
                     transition={{ delay: i * 0.05 }}
                     key={link.label}
                     href={link.target}
-                    onClick={(e) => {
-                      if (!link.isExternal) handleLinkClick(e, link.target);
-                    }}
-                    target={link.isExternal ? '_blank' : undefined}
-                    rel={link.isExternal ? 'noopener noreferrer' : undefined}
+                    onClick={(e) => handleLinkClick(e, link.target)}
                     className={`text-2xl font-display font-medium tracking-wide ${
-                      isActive ? 'text-[#F62440]' : 'text-[#1B1B1B]'
+                      isActive ? "text-accent" : "text-dark"
                     }`}
+                    aria-current={isActive ? "true" : undefined}
                   >
                     {link.label}
                   </motion.a>
@@ -196,7 +218,7 @@ export const Navbar: React.FC = () => {
             >
               <a
                 href="mailto:basaprasad76@gmail.com"
-                className="text-sm font-semibold tracking-wider lowercase text-[#F62440]"
+                className="text-sm font-semibold tracking-wider lowercase text-accent"
               >
                 basaprasad76@gmail.com
               </a>

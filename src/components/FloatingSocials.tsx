@@ -13,7 +13,7 @@ const SOCIALS = [
   },
   {
     icon: <FaGithub size={18} aria-hidden="true" />,
-    url: 'https://github.com/maniprasad76/maniprasad76',
+    url: 'https://github.com/maniprasad76',
     label: 'GitHub',
     tooltip: 'GitHub Projects',
   },

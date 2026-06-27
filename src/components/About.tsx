@@ -76,16 +76,16 @@ export const About: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="lg:col-span-7 space-y-6 text-charcoal/80 text-base md:text-lg leading-relaxed font-medium"
+            className="lg:col-span-7 space-y-6 text-charcoal/85 text-base md:text-lg leading-relaxed font-medium"
           >
             <p>
-              I am a Bachelor of Computer Applications (BCA) student and Fullstack Web Developer with a strong passion for modern web engineering and remote operations. Unlike many who focus solely on UI layouts, I thrive on the synergy between interactive client-side interfaces and robust, scalable server architectures. My journey started with a fascination for front-end aesthetics, which quickly evolved into an engineering focus on Node.js, NestJS, TypeScript, and relational databases.
+              I'm a Fullstack Web Developer with a strong passion for modern web engineering. I thrive on the synergy between interactive client-side interfaces and robust, scalable server architectures — building everything from pixel-perfect React UIs to type-safe NestJS API layers backed by PostgreSQL.
             </p>
             <p>
-              Whether I am coding structured Rest APIs in NestJS, compiling strict TypeScript codebases, building interactive React interfaces, or managing customer support simulations on Freshdesk, I bring a commitment to precision. I believe that an outstanding user experience depends as much on well-engineered, error-free backends as it does on fluid, pixel-perfect frontends.
+              My engineering focus spans the full stack: component-driven frontends with React and TypeScript, structured REST API design in NestJS, database schema architecture, and automated data pipeline scripting in Node.js. I bring a commitment to precision — whether it's maintaining 100% data integrity across 500+ records or crafting fluid user experiences.
             </p>
             <p>
-              I am fully equipped for remote team structures, bilingual in English and Telugu, and looking to join a high-performing team where I can build software, handle customer-facing challenges, and add immediate value.
+              I'm fully equipped for remote team structures, bilingual in English and Telugu, and looking to join a high-performing engineering team where I can ship production software and add immediate value.
             </p>
           </motion.div>
 
@@ -101,7 +101,7 @@ export const About: React.FC = () => {
               <h3 className="text-xl font-display font-semibold mb-6 border-b border-neutral-700 pb-4 text-[#F62440]">
                 Key Profile Highlights
               </h3>
-              <ul className="space-y-4 text-sm tracking-wide text-neutral-300">
+              <ul className="space-y-4 text-sm tracking-wide text-neutral-200">
                 <li className="flex justify-between border-b border-neutral-800 pb-2">
                   <span className="font-semibold text-neutral-400">Location:</span>
                   <span>Andhra Pradesh, India</span>
@@ -144,7 +144,7 @@ export const About: React.FC = () => {
             <h3 className="text-2xl md:text-3xl font-display font-bold text-[#1B1B1B]">
               Core Professional Pillars
             </h3>
-            <p className="text-sm text-charcoal/50 mt-2">The fundamentals driving my daily execution</p>
+            <p className="text-sm text-charcoal/65 mt-2">The fundamentals driving my daily execution</p>
           </div>
 
           <motion.div
@@ -168,7 +168,7 @@ export const About: React.FC = () => {
                   <h4 className="text-lg font-display font-bold text-[#1B1B1B] mb-3 group-hover:text-[#F62440] transition-colors duration-300">
                     {pillar.title}
                   </h4>
-                  <p className="text-sm text-charcoal/70 leading-relaxed font-medium">
+                  <p className="text-sm text-charcoal/75 leading-relaxed font-medium">
                     {pillar.description}
                   </p>
                 </div>

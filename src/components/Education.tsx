@@ -112,7 +112,7 @@ export const Education: React.FC = () => {
                   <h5 className="text-sm font-display font-bold text-[#1B1B1B] mb-1.5">
                     {item.title}
                   </h5>
-                  <p className="text-[12px] text-charcoal/70 leading-relaxed font-medium">
+                  <p className="text-[12px] text-charcoal/75 leading-relaxed font-medium">
                     {item.desc}
                   </p>
                 </div>

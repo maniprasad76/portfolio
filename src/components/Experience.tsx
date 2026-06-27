@@ -81,7 +81,7 @@ export const Experience: React.FC = () => {
 
               {/* Time period floating to the left on desktop */}
               <div className="hidden md:block absolute -left-44 top-2 text-right w-36">
-                <span className="text-xs font-bold uppercase tracking-widest text-charcoal/50">
+                <span className="text-xs font-bold uppercase tracking-widest text-charcoal/65">
                   {item.period}
                 </span>
               </div>
@@ -108,7 +108,7 @@ export const Experience: React.FC = () => {
                   {item.company}
                 </h4>
 
-                <ul className="space-y-3 text-sm text-charcoal/80 leading-relaxed font-medium">
+                <ul className="space-y-3 text-sm text-charcoal/85 leading-relaxed font-medium">
                   {item.details.map((detail, detailIdx) => (
                     <li key={detailIdx} className="flex gap-2">
                       <span className="text-[#F62440] font-bold select-none">•</span>

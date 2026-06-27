@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Mail, Briefcase } from 'lucide-react';
+import { Mail, Briefcase, Download } from 'lucide-react';
 import { MagneticButton } from './MagneticButton';
 
 const ROLES = [
@@ -136,6 +136,19 @@ export const Hero: React.FC = () => {
             >
               <Mail size={16} />
               Contact Me
+            </a>
+          </MagneticButton>
+
+          <MagneticButton>
+            <a
+              href="/resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 px-8 py-4 border-2 border-charcoal/10 text-charcoal/70 rounded-full text-sm font-semibold uppercase tracking-wider hover:bg-[#1B1B1B] hover:text-[#FFFAF3] hover:border-[#1B1B1B] transition-all duration-300"
+              data-cursor="pointer"
+            >
+              <Download size={16} />
+              Resume
             </a>
           </MagneticButton>
         </motion.div>

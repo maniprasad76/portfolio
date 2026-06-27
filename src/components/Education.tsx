@@ -27,7 +27,7 @@ const COURSEWORK = [
 
 export const Education: React.FC = () => {
   return (
-    <section id="education" className="py-24 md:py-32 bg-[#FFFAF3] relative border-t border-charcoal/5">
+    <section id="education" className="py-24 md:py-32 bg-white relative border-t border-charcoal/5">
       <div className="max-w-5xl mx-auto px-6">
         {/* Section Header */}
         <div className="mb-16 md:mb-20 text-center">

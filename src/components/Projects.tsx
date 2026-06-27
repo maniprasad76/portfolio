@@ -61,7 +61,7 @@ export const Projects: React.FC = () => {
   };
 
   return (
-    <section id="projects" className="py-24 md:py-32 bg-[#FFFAF3] relative border-t border-charcoal/5">
+    <section id="projects" className="py-24 md:py-32 bg-white relative border-t border-charcoal/5">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         {/* Section Header */}
         <div className="mb-16 md:mb-20">

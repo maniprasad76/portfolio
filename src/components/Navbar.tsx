@@ -10,8 +10,8 @@ const NAV_LINKS = [
   { label: 'Projects', target: '#projects' },
   { label: 'Experience', target: '#experience' },
   { label: 'Education', target: '#education' },
-  { label: 'Resume', target: '#resume' },
   { label: 'Contact', target: '#contact' },
+  { label: 'Resume', target: '/resume.pdf', isExternal: true },
 ];
 
 export const Navbar: React.FC = () => {
@@ -90,12 +90,16 @@ export const Navbar: React.FC = () => {
           {/* Desktop Navigation Links */}
           <nav className="hidden lg:flex items-center gap-1">
             {NAV_LINKS.map((link) => {
-              const isActive = activeSection === link.target.substring(1);
+              const isActive = !link.isExternal && activeSection === link.target.substring(1);
               return (
                 <a
                   key={link.label}
                   href={link.target}
-                  onClick={(e) => handleLinkClick(e, link.target)}
+                  onClick={(e) => {
+                    if (!link.isExternal) handleLinkClick(e, link.target);
+                  }}
+                  target={link.isExternal ? '_blank' : undefined}
+                  rel={link.isExternal ? 'noopener noreferrer' : undefined}
                   className="px-4 py-2 text-sm font-medium tracking-wide relative group"
                   data-cursor="pointer"
                 >
@@ -159,7 +163,7 @@ export const Navbar: React.FC = () => {
           >
             <nav className="flex flex-col gap-6 items-center">
               {NAV_LINKS.map((link, i) => {
-                const isActive = activeSection === link.target.substring(1);
+                const isActive = !link.isExternal && activeSection === link.target.substring(1);
                 return (
                   <motion.a
                     initial={{ opacity: 0, y: 15 }}
@@ -167,7 +171,11 @@ export const Navbar: React.FC = () => {
                     transition={{ delay: i * 0.05 }}
                     key={link.label}
                     href={link.target}
-                    onClick={(e) => handleLinkClick(e, link.target)}
+                    onClick={(e) => {
+                      if (!link.isExternal) handleLinkClick(e, link.target);
+                    }}
+                    target={link.isExternal ? '_blank' : undefined}
+                    rel={link.isExternal ? 'noopener noreferrer' : undefined}
                     className={`text-2xl font-display font-medium tracking-wide ${
                       isActive ? 'text-[#F62440]' : 'text-[#1B1B1B]'
                     }`}

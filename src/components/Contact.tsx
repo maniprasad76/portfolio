@@ -33,21 +33,37 @@ export const Contact: React.FC = () => {
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!validate()) return;
 
     setIsSubmitting(true);
-    // Simulate submission request
-    setTimeout(() => {
+    
+    try {
+      // NOTE: Replace 'YOUR_FORM_ID' with your actual Formspree form ID
+      const response = await fetch('https://formspree.io/f/YOUR_FORM_ID', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      });
+      
+      if (response.ok) {
+        setIsSubmitted(true);
+        setFormData({ name: '', email: '', subject: '', message: '' });
+      } else {
+        setErrors({ message: 'Failed to send message. Please try again later.' });
+      }
+    } catch (error) {
+      setErrors({ message: 'Network error. Please try again later.' });
+    } finally {
       setIsSubmitting(false);
-      setIsSubmitted(true);
-      setFormData({ name: '', email: '', subject: '', message: '' });
-    }, 1500);
+    }
   };
 
   return (
-    <section id="contact" className="py-24 md:py-32 bg-[#FFFAF3] relative border-t border-charcoal/5">
+    <section id="contact" className="py-24 md:py-32 bg-white relative border-t border-charcoal/5">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         {/* Section Header */}
         <div className="mb-16 md:mb-20">

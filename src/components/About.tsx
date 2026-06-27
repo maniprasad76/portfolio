@@ -4,22 +4,22 @@ import { Award, Zap, Code, ShieldCheck } from 'lucide-react';
 
 const PILLARS = [
   {
-    icon: <Code className="text-[#F62440]" size={28} />,
+    icon: <Code size={26} />,
     title: 'Fullstack Development',
     description: 'Designing interactive React interfaces, type-safe NestJS REST/GraphQL APIs, database integrations, and high-performance Node.js backends.',
   },
   {
-    icon: <ShieldCheck className="text-[#F62440]" size={28} />,
+    icon: <ShieldCheck size={26} />,
     title: 'Precision & File Integrity',
     description: 'Maintained 100% accuracy and zero discrepancies across 500+ data entries. Attention to detail is an absolute non-negotiable.',
   },
   {
-    icon: <Zap className="text-[#F62440]" size={28} />,
+    icon: <Zap size={26} />,
     title: 'Quick Learner & Adaptable',
     description: 'From Excel formulas to Freshdesk ticket queues, rapidly picking up software suites and operating standards is my second nature.',
   },
   {
-    icon: <Award className="text-[#F62440]" size={28} />,
+    icon: <Award size={26} />,
     title: 'Remote Collaboration Ready',
     description: 'Self-motivated and disciplined. Experienced in managing calendars, organizing Drive files, and professional inbox management.',
   },
@@ -158,17 +158,22 @@ export const About: React.FC = () => {
               <motion.div
                 key={i}
                 variants={cardVariants}
-                className="bg-[#FFFAF3] border border-charcoal/5 p-8 rounded-xl hover:border-[#F62440]/30 hover:shadow-lg transition-all duration-300 flex flex-col justify-between group"
+                className="bg-white p-8 md:p-10 rounded-3xl shadow-[0_4px_20px_rgb(0,0,0,0.03)] hover:shadow-[0_8px_30px_rgb(246,36,64,0.08)] hover:-translate-y-2 transition-all duration-500 border border-neutral-100 flex flex-col group relative overflow-hidden"
                 data-cursor="pointer"
               >
-                <div>
-                  <div className="mb-6 p-3 bg-charcoal/5 rounded-lg inline-block group-hover:bg-[#F62440]/5 transition-colors duration-300">
+                {/* Decorative hover shape */}
+                <div className="absolute top-0 right-0 w-40 h-40 bg-[#F62440]/5 rounded-bl-[100px] -mr-10 -mt-10 transition-transform duration-500 scale-0 group-hover:scale-100 origin-top-right" />
+                
+                <div className="relative z-10 flex flex-col h-full">
+                  <div className="mb-8 w-16 h-16 flex items-center justify-center rounded-2xl bg-[#FFFAF3] border border-charcoal/5 group-hover:bg-[#F62440] group-hover:border-[#F62440] transition-all duration-500 text-charcoal group-hover:text-white shadow-sm">
                     {pillar.icon}
                   </div>
-                  <h4 className="text-lg font-display font-bold text-[#1B1B1B] mb-3 group-hover:text-[#F62440] transition-colors duration-300">
+                  
+                  <h4 className="text-xl font-display font-bold text-[#1B1B1B] mb-4">
                     {pillar.title}
                   </h4>
-                  <p className="text-sm text-charcoal/75 leading-relaxed font-medium">
+                  
+                  <p className="text-[15px] text-charcoal/70 leading-relaxed font-medium mt-auto">
                     {pillar.description}
                   </p>
                 </div>

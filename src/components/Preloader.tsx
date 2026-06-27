@@ -3,7 +3,14 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 const GREETINGS = [
   'Hello',         // English
+  'Namaskaram',    // Telugu
   'Namaste',       // Hindi
+  'Hola',          // Spanish
+  'Bonjour',       // French
+  'Ciao',          // Italian
+  'Konnichiwa',    // Japanese
+  'Hallo',         // German
+  'Olá',           // Portuguese
   'Basa Prasad',   // User's Name
 ];
 

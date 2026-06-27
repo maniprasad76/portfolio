@@ -13,9 +13,14 @@ export const Footer: React.FC = () => {
       <div className="max-w-7xl mx-auto px-6 md:px-12 flex flex-col md:flex-row justify-between items-center gap-6">
         {/* Left Branding */}
         <div>
-          <span className="font-display font-bold text-lg tracking-tighter text-[#FFFAF3]">
-            BASA<span className="text-[#F62440]">.</span>P
-          </span>
+          <div className="flex items-center gap-2.5 mb-1">
+            <div className="w-8 h-8 bg-[#F62440] text-white rounded-lg flex items-center justify-center shadow-sm">
+              <span className="font-display font-bold text-base leading-none pt-0.5">P</span>
+            </div>
+            <span className="font-display font-bold text-xl tracking-wider text-[#FFFAF3]">
+              PRASAD
+            </span>
+          </div>
           <p className="text-[10px] text-neutral-500 mt-1 uppercase tracking-widest font-semibold">
             © {new Date().getFullYear()} Basa Prasad. All rights reserved.
           </p>

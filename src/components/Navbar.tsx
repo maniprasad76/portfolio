@@ -97,12 +97,15 @@ export const Navbar: React.FC = () => {
           <a
             href="#home"
             onClick={(e) => handleLinkClick(e, "#home")}
-            className="flex items-center gap-2 group"
+            className="flex items-center gap-2.5 group"
             data-cursor="pointer"
             aria-label="Basa Prasad - Home"
           >
-            <span className="font-display font-bold text-xl md:text-2xl tracking-tighter text-dark">
-              BASA<span className="text-accent">.</span>P
+            <div className="w-9 h-9 bg-dark text-cream rounded-xl flex items-center justify-center group-hover:bg-accent transition-colors duration-300 shadow-sm">
+              <span className="font-display font-bold text-lg leading-none pt-0.5">P</span>
+            </div>
+            <span className="font-display font-bold text-xl tracking-wider text-dark">
+              PRASAD
             </span>
           </a>
 

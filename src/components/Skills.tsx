@@ -1,5 +1,5 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { SiHtml5, SiGooglecloud, SiZendesk, SiReact, SiTypescript, SiNodedotjs, SiNestjs, SiPostgresql } from 'react-icons/si';
 import { FaLaptopCode, FaRegEnvelope, FaUserGroup, FaLanguage, FaCss3Alt, FaFileExcel, FaFileWord, FaFilePowerpoint, FaServer } from 'react-icons/fa6';
 import { MdOutlineAssessment } from 'react-icons/md';
@@ -70,89 +70,120 @@ const SKILL_CATEGORIES = [
 ];
 
 export const Skills: React.FC = () => {
-  const containerVariants = {
-    hidden: {},
-    visible: {
-      transition: {
-        staggerChildren: 0.08,
-      },
-    },
-  };
-
+  const [activeTab, setActiveTab] = useState(0);
 
   return (
     <section id="skills" className="py-24 md:py-32 bg-[#FFFAF3] relative border-t border-charcoal/5">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         {/* Section Header */}
-        <div className="mb-16 md:mb-20">
+        <div className="mb-16 md:mb-20 md:text-center">
           <motion.p
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: '-20%' }}
-            transition={{ duration: 0.6 }}
+            initial={{ opacity: 0, y: -10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
             className="text-xs font-bold uppercase tracking-widest text-[#F62440] mb-2"
           >
             My Stack
           </motion.p>
           <motion.h2
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-20%' }}
-            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
             className="text-3xl md:text-5xl font-display font-bold text-[#1B1B1B]"
           >
-            Core Competencies & Capabilities
+            Core Competencies
           </motion.h2>
         </div>
 
-        {/* Skill Category Grids */}
-        <div className="space-y-12">
-          {SKILL_CATEGORIES.map((category, catIdx) => (
-            <div key={catIdx} className="border-b border-charcoal/5 pb-8 last:border-0 last:pb-0">
-              <div className="flex items-center gap-3 mb-6">
-                {category.icon}
-                <h3 className="text-lg md:text-xl font-display font-bold text-[#1B1B1B]">
-                  {category.title}
-                </h3>
-              </div>
-
-              <motion.div
-                variants={containerVariants}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, margin: '-10%' }}
-                className="w-full relative"
+        {/* Modern Tabbed UI */}
+        <div className="flex flex-col lg:flex-row gap-8 lg:gap-16">
+          {/* Tabs */}
+          <div className="flex lg:flex-col gap-2 overflow-x-auto pb-4 lg:pb-0 hide-scrollbar lg:w-1/3 lg:border-r border-charcoal/5 lg:pr-8">
+            {SKILL_CATEGORIES.map((cat, idx) => (
+              <button
+                key={idx}
+                onClick={() => setActiveTab(idx)}
+                className={`relative px-6 py-4 rounded-2xl flex items-center gap-4 text-left transition-all duration-300 whitespace-nowrap lg:whitespace-normal flex-shrink-0 lg:flex-shrink w-full ${
+                  activeTab === idx 
+                    ? 'text-white shadow-lg' 
+                    : 'text-charcoal/60 hover:text-charcoal hover:bg-charcoal/5'
+                }`}
               >
-                <LogoLoop
-                  logos={category.skills.map((skill) => ({
-                    node: (
-                      <div className="px-5 md:px-6 py-3 bg-white border border-charcoal/10 hover:border-[#F62440]/40 hover:shadow-lg hover:shadow-[#F62440]/10 rounded-full transition-all duration-300 flex items-center gap-3 group" data-cursor="pointer">
-                        {'icon' in skill && (
-                          <span className="text-xl group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300">
-                            {skill.icon}
-                          </span>
-                        )}
-                        <span className="text-sm font-semibold text-charcoal group-hover:text-[#F62440] transition-colors duration-300 whitespace-nowrap">
+                {activeTab === idx && (
+                  <motion.div
+                    layoutId="activeTab"
+                    className="absolute inset-0 bg-charcoal rounded-2xl"
+                    initial={false}
+                    transition={{ type: 'spring', stiffness: 400, damping: 30 }}
+                  />
+                )}
+                <span className="relative z-10 text-xl hidden sm:block">
+                  {React.cloneElement(cat.icon as React.ReactElement, {
+                    className: activeTab === idx ? 'text-[#F62440]' : 'text-current',
+                  })}
+                </span>
+                <span className={`relative z-10 font-display font-bold text-lg ${activeTab === idx ? 'text-white' : ''}`}>
+                  {cat.title}
+                </span>
+              </button>
+            ))}
+          </div>
+
+          {/* Tab Content Window */}
+          <div className="lg:w-2/3 min-h-[420px]">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeTab}
+                initial={{ opacity: 0, y: 15, filter: 'blur(4px)' }}
+                animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                exit={{ opacity: 0, y: -15, filter: 'blur(4px)' }}
+                transition={{ duration: 0.3 }}
+                className="bg-white rounded-[2rem] p-8 md:p-12 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-neutral-100 h-full flex flex-col"
+              >
+                <div className="flex items-center gap-6 mb-10">
+                  <div className="w-16 h-16 rounded-2xl bg-[#FFFAF3] border border-charcoal/5 flex items-center justify-center text-[#F62440] shadow-sm flex-shrink-0">
+                    {React.cloneElement(SKILL_CATEGORIES[activeTab].icon as React.ReactElement, { size: 28 })}
+                  </div>
+                  <h3 className="text-2xl md:text-3xl font-display font-bold text-dark">
+                    {SKILL_CATEGORIES[activeTab].title}
+                  </h3>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-6 mt-auto">
+                  {SKILL_CATEGORIES[activeTab].skills.map((skill, idx) => (
+                    <motion.div 
+                      key={idx}
+                      initial={{ opacity: 0, x: -10 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: idx * 0.05 + 0.15 }}
+                      className="flex items-center gap-4 group"
+                    >
+                      {'icon' in skill ? (
+                        <div className="w-12 h-12 rounded-xl bg-neutral-50 border border-neutral-100 flex items-center justify-center text-2xl group-hover:bg-white group-hover:border-[#F62440]/30 group-hover:shadow-sm transition-all duration-300 flex-shrink-0">
+                          {skill.icon}
+                        </div>
+                      ) : (
+                        <div className="w-12 h-12 rounded-xl bg-neutral-50 border border-neutral-100 flex items-center justify-center text-[#F62440] font-bold text-lg group-hover:bg-white transition-all duration-300 flex-shrink-0">
+                          0{idx + 1}
+                        </div>
+                      )}
+                      
+                      <div className="flex flex-col">
+                        <span className="font-bold text-charcoal text-base">
                           {skill.name}
                         </span>
                         {'level' in skill && (
-                          <span className="text-xs font-medium text-charcoal/65 ml-1 border-l border-charcoal/10 pl-3 whitespace-nowrap">
+                          <span className="text-[10px] font-bold uppercase tracking-widest text-[#F62440] mt-0.5">
                             {skill.level}
                           </span>
                         )}
                       </div>
-                    )
-                  }))}
-                  speed={80}
-                  direction={catIdx % 2 === 0 ? 'left' : 'right'}
-                  logoHeight={50}
-                  gap={20}
-                  hoverSpeed={20}
-                  fadeOut={true}
-                />
+                    </motion.div>
+                  ))}
+                </div>
               </motion.div>
-            </div>
-          ))}
+            </AnimatePresence>
+          </div>
         </div>
       </div>
     </section>

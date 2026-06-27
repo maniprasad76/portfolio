@@ -1,0 +1,108 @@
+@import url('https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700,900&f[]=clash-display@200,300,400,500,600,700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: auto; /* lenis will handle smooth scroll */
+    background-color: #FFFAF3;
+    color: #1B1B1B;
+  }
+  
+  body {
+    font-family: 'Satoshi', sans-serif;
+    overflow-x: hidden;
+    background-color: #FFFAF3;
+    color: #1B1B1B;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Hide default cursor on desktop devices to enable custom cursor */
+  @media (pointer: fine) {
+    body, a, button, input, textarea, [role="button"], select {
+      cursor: none !important;
+    }
+  }
+}
+
+@layer utilities {
+  /* Text reveal style */
+  .reveal-text {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+  
+  /* Glassmorphism navbar styling */
+  .glass-nav {
+    background: rgba(255, 250, 243, 0.7);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(27, 27, 27, 0.05);
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #FFFAF3;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(246, 36, 64, 0.2);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(246, 36, 64, 0.6);
+}
+
+/* Selection highlight */
+::selection {
+  background: #F62440;
+  color: #FFFAF3;
+}
+
+/* Lenis CSS integration */
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overflow: clip;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+/* Custom styles for printing resume */
+@media print {
+  body {
+    background: white !important;
+    color: black !important;
+  }
+  
+  nav, .custom-cursor, #contact, footer, .preloader, button:not(.print-btn) {
+    display: none !important;
+  }
+  
+  .print-page {
+    display: block !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+  }
+}

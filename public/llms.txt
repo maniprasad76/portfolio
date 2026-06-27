@@ -1,0 +1,13 @@
+# Basa Prasad Portfolio
+
+Portfolio of Basa Prasad, a detail-oriented BCA student, Fullstack Web Developer, and Remote Professional specializing in React, NestJS, Node.js, TypeScript, data automation scripting, and customer support.
+
+## Summary of Skills
+- **Fullstack Web Engineering**: React.js, NestJS, Node.js, TypeScript, SQL databases (PostgreSQL), RESTful API architectures.
+- **Backend & Data Automation**: Coded Node.js automation scripts, Google Sheets API, database auditing, and record management with 100% integrity.
+- **Helpdesk CS & VA Operations**: Freshdesk ticketing systems, email/chat support workflows, standard operating procedures, and professional inbox coordination.
+
+## Experience
+- **Fullstack Web Projects**: Created React dashboards backed by type-safe NestJS server frameworks and PostgreSQL databases.
+- **ETL Data Automation**: Configured automation scripts in Node.js to scan, audit, and sync 500+ record datasets.
+- **Support Simulation**: Managed multi-channel ticketing escalation simulations on helpdesk platforms (Freshdesk/Zendesk).

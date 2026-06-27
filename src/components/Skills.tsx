@@ -129,36 +129,31 @@ export const Skills: React.FC = () => {
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, margin: '-10%' }}
-                className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4"
+                className="flex flex-wrap gap-3 md:gap-4"
               >
                 {category.skills.map((skill, skillIdx) => (
                   <motion.div
                     key={skillIdx}
                     variants={cardVariants}
-                    whileHover={{ scale: 1.02 }}
-                    className="p-5 bg-charcoal/5 border border-charcoal/5 hover:border-[#F62440]/30 hover:bg-[#FFFAF3] rounded-lg transition-all duration-300 flex flex-col justify-between group"
+                    whileHover={{ scale: 1.05, y: -2 }}
+                    className="px-5 md:px-6 py-3 md:py-3.5 bg-white border border-charcoal/10 hover:border-[#F62440]/40 hover:shadow-lg hover:shadow-[#F62440]/10 rounded-full transition-all duration-300 flex items-center gap-3 group"
                     data-cursor="pointer"
                   >
-                    <div className="flex items-center justify-between mb-3">
-                      <span className="text-sm font-semibold text-[#1B1B1B] group-hover:text-[#F62440] transition-colors duration-300">
-                        {skill.name}
+                    {/* Optional Tech Icon */}
+                    {'icon' in skill && (
+                      <span className="text-xl group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300">
+                        {skill.icon}
                       </span>
-                      {/* Optional Tech Icon */}
-                      {'icon' in skill && (
-                        <span className="text-lg group-hover:scale-110 transition-transform duration-300">
-                          {skill.icon}
-                        </span>
-                      )}
-                    </div>
+                    )}
                     
-                    {/* Optional details level */}
-                    {'level' in skill ? (
-                      <span className="text-[11px] font-medium tracking-wide text-charcoal/50 uppercase">
+                    <span className="text-sm font-semibold text-charcoal group-hover:text-[#F62440] transition-colors duration-300">
+                      {skill.name}
+                    </span>
+                    
+                    {/* Optional details level for soft skills/languages */}
+                    {'level' in skill && (
+                      <span className="text-xs font-medium text-charcoal/50 ml-1 border-l border-charcoal/10 pl-3">
                         {skill.level}
-                      </span>
-                    ) : (
-                      <span className="text-[11px] font-semibold text-[#F62440]/70 uppercase tracking-widest">
-                        Skill Verified
                       </span>
                     )}
                   </motion.div>

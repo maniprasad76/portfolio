@@ -1,6 +1,7 @@
 import React from 'react';
 import { ArrowUp } from 'lucide-react';
 import { MagneticButton } from './MagneticButton';
+import { openDeepLink } from '../utils/deepLink';
 
 export const Footer: React.FC = () => {
   const scrollToTop = (e: React.MouseEvent) => {
@@ -34,6 +35,7 @@ export const Footer: React.FC = () => {
             </span>
             <a
               href="https://www.instagram.com/___mani___76/"
+              onClick={(e) => openDeepLink(e, 'https://www.instagram.com/___mani___76/', 'instagram://user?username=___mani___76')}
               target="_blank"
               rel="noopener noreferrer"
               className="font-signature text-2xl md:text-3xl text-[#F62440] hover:text-white transition-colors duration-300 -rotate-2 hover:rotate-0 inline-block"

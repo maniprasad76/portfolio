@@ -3,11 +3,13 @@ import { m } from 'framer-motion';
 import { FaLinkedin, FaGithub, FaWhatsapp, FaInstagram } from 'react-icons/fa6';
 import { Mail } from 'lucide-react';
 import { MagneticButton } from './MagneticButton';
+import { openDeepLink } from '../utils/deepLink';
 
 const SOCIALS = [
   {
     icon: <FaLinkedin size={18} aria-hidden="true" />,
     url: 'https://www.linkedin.com/in/prasad-basa-05314a28a/',
+    appScheme: 'linkedin://profile/prasad-basa-05314a28a/',
     label: 'LinkedIn',
     tooltip: 'LinkedIn Profile',
   },
@@ -20,12 +22,14 @@ const SOCIALS = [
   {
     icon: <FaInstagram size={18} aria-hidden="true" />,
     url: 'https://www.instagram.com/___mani___76/',
+    appScheme: 'instagram://user?username=___mani___76',
     label: 'Instagram',
     tooltip: 'Instagram Profile',
   },
   {
     icon: <FaWhatsapp size={18} aria-hidden="true" />,
     url: `https://wa.me/${import.meta.env.VITE_PHONE_NUMBER || '917569428709'}`,
+    appScheme: `whatsapp://send?phone=${import.meta.env.VITE_PHONE_NUMBER || '917569428709'}`,
     label: 'WhatsApp',
     tooltip: 'Chat on WhatsApp',
   },
@@ -54,6 +58,7 @@ export const FloatingSocials: React.FC = () => {
           <MagneticButton key={idx}>
             <a
               href={social.url}
+              onClick={(e) => openDeepLink(e, social.url, social.appScheme)}
               target="_blank"
               rel="noopener noreferrer"
               aria-label={social.label}

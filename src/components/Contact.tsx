@@ -3,6 +3,7 @@ import { m } from 'framer-motion';
 import { Mail, MessageCircle, Send, CheckCircle } from 'lucide-react';
 import { FaLinkedin, FaGithub, FaInstagram } from 'react-icons/fa6';
 import { MagneticButton } from './MagneticButton';
+import { openDeepLink } from '../utils/deepLink';
 
 export const Contact: React.FC = () => {
   const [formState, setFormState] = useState<'idle' | 'sending' | 'sent'>('idle');
@@ -205,6 +206,11 @@ export const Contact: React.FC = () => {
               <MagneticButton>
                 <a
                   href={`https://wa.me/${import.meta.env.VITE_PHONE_NUMBER || '917569428709'}`}
+                  onClick={(e) => openDeepLink(
+                    e, 
+                    `https://wa.me/${import.meta.env.VITE_PHONE_NUMBER || '917569428709'}`, 
+                    `whatsapp://send?phone=${import.meta.env.VITE_PHONE_NUMBER || '917569428709'}`
+                  )}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-4 px-6 py-4 bg-cream border border-charcoal/5 rounded-xl hover:border-accent/30 hover:shadow-md transition-all duration-300 group w-full"
@@ -228,13 +234,28 @@ export const Contact: React.FC = () => {
               </h4>
               <div className="flex gap-4">
                 {[
-                  { icon: <FaLinkedin size={20} aria-hidden="true" />, url: 'https://www.linkedin.com/in/prasad-basa-05314a28a/', label: 'LinkedIn Profile' },
-                  { icon: <FaGithub size={20} aria-hidden="true" />, url: 'https://github.com/maniprasad76', label: 'GitHub Profile' },
-                  { icon: <FaInstagram size={20} aria-hidden="true" />, url: 'https://www.instagram.com/___mani___76/', label: 'Instagram Profile' },
+                  { 
+                    icon: <FaLinkedin size={20} aria-hidden="true" />, 
+                    url: 'https://www.linkedin.com/in/prasad-basa-05314a28a/', 
+                    appScheme: 'linkedin://profile/prasad-basa-05314a28a/',
+                    label: 'LinkedIn Profile' 
+                  },
+                  { 
+                    icon: <FaGithub size={20} aria-hidden="true" />, 
+                    url: 'https://github.com/maniprasad76', 
+                    label: 'GitHub Profile' 
+                  },
+                  { 
+                    icon: <FaInstagram size={20} aria-hidden="true" />, 
+                    url: 'https://www.instagram.com/___mani___76/', 
+                    appScheme: 'instagram://user?username=___mani___76',
+                    label: 'Instagram Profile' 
+                  },
                 ].map((social, idx) => (
                   <MagneticButton key={idx}>
                     <a
                       href={social.url}
+                      onClick={(e) => openDeepLink(e, social.url, (social as any).appScheme)}
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label={social.label}

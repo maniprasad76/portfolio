@@ -1,32 +1,61 @@
-# React + TypeScript + Vite
+# 🚀 Basa Prasad - Premium Fullstack Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Welcome to the open-source repository for my personal portfolio! This project is a world-class, immersive, and interactive digital resume designed to showcase my journey as a **Fullstack Web Developer, Data Admin, Virtual Assistant, and Customer Support Specialist**.
 
-Currently, two official plugins are available:
+Built with **React.js, Vite, Tailwind CSS, Framer Motion**, and **GSAP**, this portfolio features a highly responsive and modern Awwwards-inspired aesthetic. 
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🌐 Live Demo
+*(Add your live URL here once deployed, e.g., https://basaprasad.vercel.app)*
 
-## React Compiler
+## ✨ Key Features
+- **Immersive Custom Cursor**: Inverted blend cursor (`mix-blend-difference`) providing dynamic visual feedback on interactive elements.
+- **Ambient Canvas Particles**: High-performance background dust particles that react to mouse movement.
+- **Magnetic UI Elements**: Smooth magnetic hover physics for social icons and call-to-action buttons.
+- **Responsive & Modern Design**: Clean glassmorphism UI, curated typography (Clash Display & Satoshi), and smooth scrolling via Lenis.
+- **Fullstack Focus**: Showcases core competencies spanning React.js frontends to NestJS & Node.js backend integrations.
+- **SEO & Accessibility Optimized**: 100/100 Lighthouse scores for Best Practices, SEO, and Accessibility.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🛠️ Tech Stack
+- **Framework**: React 19 + TypeScript
+- **Bundler**: Vite
+- **Styling**: Tailwind CSS v3
+- **Animations**: Framer Motion v12 & GSAP
+- **Scroll**: Lenis (Smooth Scrolling)
+- **Icons**: Lucide React & React Icons
 
-## Expanding the Oxlint configuration
+## 🚀 Getting Started
 
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
+To run this project locally, follow these steps:
 
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+### 1. Clone the repository
+```bash
+git clone https://github.com/maniprasad76/portfolio.git
+cd portfolio
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+### 2. Install dependencies
+```bash
+npm install
+```
+
+### 3. Run the development server
+```bash
+npm run dev
+```
+
+Your app will be running at `http://localhost:5173/`.
+
+### 4. Build for Production
+```bash
+npm run build
+```
+
+## 📬 Connect with Me
+- **GitHub**: [@maniprasad76](https://github.com/maniprasad76/maniprasad76)
+- **LinkedIn**: [Prasad Basa](https://www.linkedin.com/in/prasad-basa-05314a28a/)
+- **Instagram**: [___mani___76](https://www.instagram.com/___mani___76/)
+- **WhatsApp**: [+91 7569428709](https://wa.me/917569428709)
+- **Email**: [basaprasad76@gmail.com](mailto:basaprasad76@gmail.com)
+
+## 📄 License
+This project is open-source and available under the MIT License.

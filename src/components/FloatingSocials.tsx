@@ -43,7 +43,7 @@ export const FloatingSocials: React.FC = () => {
       initial={{ opacity: 0, x: 50 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ delay: 2.5, duration: 0.8, ease: [0.25, 1, 0.5, 1] }}
-      className="fixed right-6 top-1/2 -translate-y-1/2 z-[49] hidden md:flex flex-col items-center"
+      className="fixed right-2 md:right-6 top-1/2 -translate-y-1/2 z-[49] flex flex-col items-center scale-90 md:scale-100 origin-right"
     >
       {/* Decorative vertical line */}
       <div className="w-[1px] h-12 bg-charcoal/10 mb-4" />

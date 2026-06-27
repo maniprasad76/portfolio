@@ -6,23 +6,35 @@ import { MagneticButton } from './MagneticButton';
 
 export const Contact: React.FC = () => {
   const [formState, setFormState] = useState<'idle' | 'sending' | 'sent'>('idle');
-  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+  const [formData, setFormData] = useState({ name: '', email: '', message: '', _gotcha: '' });
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setFormState('sending');
+
+    // Honeypot spam prevention
+    if (formData._gotcha) {
+      setFormState('sent');
+      setFormData({ name: '', email: '', message: '', _gotcha: '' });
+      setTimeout(() => setFormState('idle'), 4000);
+      return;
+    }
     
     try {
       // Using Formspree for serverless form handling
       const response = await fetch('https://formspree.io/f/basaprasad76@gmail.com', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          message: formData.message
+        }),
       });
       
       if (response.ok) {
         setFormState('sent');
-        setFormData({ name: '', email: '', message: '' });
+        setFormData({ name: '', email: '', message: '', _gotcha: '' });
         setTimeout(() => setFormState('idle'), 4000);
       } else {
         // Fallback: open mailto
@@ -76,6 +88,20 @@ export const Contact: React.FC = () => {
             </p>
 
             <form onSubmit={handleSubmit} className="space-y-5">
+              {/* Honeypot field hidden from users but visible to spam bots */}
+              <div className="hidden" aria-hidden="true">
+                <label htmlFor="contact-gotcha">Do not fill this in</label>
+                <input
+                  id="contact-gotcha"
+                  type="text"
+                  name="_gotcha"
+                  value={formData._gotcha}
+                  onChange={(e) => setFormData(prev => ({ ...prev, _gotcha: e.target.value }))}
+                  tabIndex={-1}
+                  autoComplete="off"
+                />
+              </div>
+
               <div>
                 <label htmlFor="contact-name" className="block text-xs font-bold uppercase tracking-widest text-dark mb-2">
                   Your Name
@@ -84,10 +110,11 @@ export const Contact: React.FC = () => {
                   id="contact-name"
                   type="text"
                   required
+                  maxLength={80}
                   value={formData.name}
                   onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
                   placeholder="John Doe"
-                  className="w-full px-5 py-3.5 bg-cream border border-charcoal/10 rounded-xl text-sm font-medium text-dark placeholder:text-charcoal/40 focus:outline-none focus:border-accent/50 focus:ring-2 focus:ring-accent/10 transition-all duration-300"
+                  className="w-full px-5 py-3.5 bg-cream border border-charcoal/10 rounded-xl text-sm font-medium text-dark placeholder:text-charcoal/40 focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/20 focus-visible:ring-2 focus-visible:ring-accent transition-all duration-300"
                 />
               </div>
               
@@ -99,10 +126,11 @@ export const Contact: React.FC = () => {
                   id="contact-email"
                   type="email"
                   required
+                  maxLength={100}
                   value={formData.email}
                   onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
                   placeholder="john@company.com"
-                  className="w-full px-5 py-3.5 bg-cream border border-charcoal/10 rounded-xl text-sm font-medium text-dark placeholder:text-charcoal/40 focus:outline-none focus:border-accent/50 focus:ring-2 focus:ring-accent/10 transition-all duration-300"
+                  className="w-full px-5 py-3.5 bg-cream border border-charcoal/10 rounded-xl text-sm font-medium text-dark placeholder:text-charcoal/40 focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/20 focus-visible:ring-2 focus-visible:ring-accent transition-all duration-300"
                 />
               </div>
               
@@ -114,10 +142,11 @@ export const Contact: React.FC = () => {
                   id="contact-message"
                   required
                   rows={5}
+                  maxLength={3000}
                   value={formData.message}
                   onChange={(e) => setFormData(prev => ({ ...prev, message: e.target.value }))}
                   placeholder="Tell me about your project or opportunity..."
-                  className="w-full px-5 py-3.5 bg-cream border border-charcoal/10 rounded-xl text-sm font-medium text-dark placeholder:text-charcoal/40 focus:outline-none focus:border-accent/50 focus:ring-2 focus:ring-accent/10 transition-all duration-300 resize-none"
+                  className="w-full px-5 py-3.5 bg-cream border border-charcoal/10 rounded-xl text-sm font-medium text-dark placeholder:text-charcoal/40 focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/20 focus-visible:ring-2 focus-visible:ring-accent transition-all duration-300 resize-none"
                 />
               </div>
 

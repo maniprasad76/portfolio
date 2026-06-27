@@ -59,7 +59,7 @@ export const Resume: React.FC = () => {
             </div>
             
             <div className="text-xs text-charcoal/70 space-y-1 md:text-right font-medium">
-              <p>+91 7569428709</p>
+              {/* Phone number hidden for privacy */}
               <p>basaprasad76@gmail.com</p>
               <p>Srikakulam, Andhra Pradesh</p>
               <p className="underline">linkedin.com/in/prasad-basa-05314a28a</p>

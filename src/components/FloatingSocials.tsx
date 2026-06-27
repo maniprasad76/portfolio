@@ -25,7 +25,7 @@ const SOCIALS = [
   },
   {
     icon: <FaWhatsapp size={18} aria-hidden="true" />,
-    url: 'https://wa.me/917569428709',
+    url: `https://wa.me/${import.meta.env.VITE_PHONE_NUMBER || '917569428709'}`,
     label: 'WhatsApp',
     tooltip: 'Chat on WhatsApp',
   },

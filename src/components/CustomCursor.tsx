@@ -90,28 +90,28 @@ export const CustomCursor: React.FC = () => {
     default: {
       width: 28,
       height: 28,
-      backgroundColor: 'rgba(255, 255, 255, 0)',
-      border: '1.5px solid rgba(255, 255, 255, 1)',
+      backgroundColor: 'rgba(246, 36, 64, 0)',
+      border: '1.5px solid rgba(246, 36, 64, 1)',
     },
     hover: {
       width: 56,
       height: 56,
-      backgroundColor: 'rgba(255, 255, 255, 1)',
-      border: '1.5px solid rgba(255, 255, 255, 1)',
+      backgroundColor: 'rgba(246, 36, 64, 0.1)',
+      border: '1.5px solid rgba(246, 36, 64, 1)',
       scale: 1.15,
     },
     view: {
       width: 76,
       height: 76,
-      backgroundColor: 'rgba(255, 255, 255, 1)',
-      border: '1px solid rgba(255, 255, 255, 1)',
+      backgroundColor: 'rgba(246, 36, 64, 1)',
+      border: '1px solid rgba(246, 36, 64, 1)',
       scale: 1.1,
     },
     click: {
       width: 20,
       height: 20,
-      backgroundColor: 'rgba(255, 255, 255, 0)',
-      border: '2px solid rgba(255, 255, 255, 1)',
+      backgroundColor: 'rgba(246, 36, 64, 0.2)',
+      border: '2px solid rgba(246, 36, 64, 1)',
       scale: 0.85,
     }
   };
@@ -120,7 +120,7 @@ export const CustomCursor: React.FC = () => {
     <>
       {/* Trailing spring cursor circle (Inverting colors with mix-blend-difference) */}
       <motion.div
-        className="fixed top-0 left-0 rounded-full pointer-events-none z-[9999] flex items-center justify-center -translate-x-1/2 -translate-y-1/2 mix-blend-difference"
+        className="fixed top-0 left-0 rounded-full pointer-events-none z-[9999] flex items-center justify-center -translate-x-1/2 -translate-y-1/2"
         style={{
           x: cursorX,
           y: cursorY,
@@ -130,7 +130,7 @@ export const CustomCursor: React.FC = () => {
         transition={{ type: 'spring', damping: 28, stiffness: 260, mass: 0.25 }}
       >
         {cursorType === 'view' && (
-          <span className="text-[10px] font-display font-bold tracking-widest text-black select-none">
+          <span className="text-[10px] font-display font-bold tracking-widest text-white select-none">
             {hoverText}
           </span>
         )}
@@ -138,7 +138,7 @@ export const CustomCursor: React.FC = () => {
 
       {/* Inner pinpoint dot */}
       <motion.div
-        className="fixed w-1.5 h-1.5 bg-white rounded-full pointer-events-none z-[10000] -translate-x-1/2 -translate-y-1/2 mix-blend-difference"
+        className="fixed w-1.5 h-1.5 bg-[#F62440] rounded-full pointer-events-none z-[10000] -translate-x-1/2 -translate-y-1/2"
         style={{
           x: dotX,
           y: dotY,

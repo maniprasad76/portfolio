@@ -196,7 +196,7 @@ export const Navbar: React.FC = () => {
             >
               <a
                 href="mailto:basaprasad76@gmail.com"
-                className="text-sm font-semibold tracking-wider uppercase text-[#F62440]"
+                className="text-sm font-semibold tracking-wider lowercase text-[#F62440]"
               >
                 basaprasad76@gmail.com
               </a>

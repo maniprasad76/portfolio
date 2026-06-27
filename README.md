@@ -5,7 +5,7 @@ Welcome to the open-source repository for my personal portfolio! This project is
 Built with **React.js, Vite, Tailwind CSS, Framer Motion**, and **GSAP**, this portfolio features a highly responsive and modern Awwwards-inspired aesthetic. 
 
 ## 🌐 Live Demo
-You can view the live portfolio here: **[https://portfolio-zeta-five-kad0fbp1ih.vercel.app](https://portfolio-zeta-five-kad0fbp1ih.vercel.app)**
+You can view the live portfolio here: **[https://basa-prasad-portfolio.vercel.app/](https://basa-prasad-portfolio.vercel.app/)**
 
 ## ✨ Key Features
 - **Immersive Custom Cursor**: Inverted blend cursor (`mix-blend-difference`) providing dynamic visual feedback on interactive elements.
@@ -54,7 +54,7 @@ npm run build
 - **GitHub**: [@maniprasad76](https://github.com/maniprasad76/maniprasad76)
 - **LinkedIn**: [Prasad Basa](https://www.linkedin.com/in/prasad-basa-05314a28a/)
 - **Instagram**: [___mani___76](https://www.instagram.com/___mani___76/)
-- **WhatsApp**: [+91 7569428709](https://wa.me/917569428709)
+- **WhatsApp**: [Message Me on WhatsApp](https://wa.me/917569428709)
 - **Email**: [basaprasad76@gmail.com](mailto:basaprasad76@gmail.com)
 
 ## 📄 License

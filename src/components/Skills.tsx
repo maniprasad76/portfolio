@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { SiHtml5, SiGooglecloud, SiZendesk, SiReact, SiTypescript, SiNodedotjs, SiNestjs, SiPostgresql } from 'react-icons/si';
 import { FaLaptopCode, FaRegEnvelope, FaUserGroup, FaLanguage, FaCss3Alt, FaFileExcel, FaFileWord, FaFilePowerpoint, FaServer } from 'react-icons/fa6';
 import { MdOutlineAssessment } from 'react-icons/md';
-
+import LogoLoop from './LogoLoop';
 const SKILL_CATEGORIES = [
   {
     title: 'Frontend Development',
@@ -129,35 +129,35 @@ export const Skills: React.FC = () => {
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, margin: '-10%' }}
-                className="flex flex-wrap gap-3 md:gap-4"
+                className="w-full relative"
               >
-                {category.skills.map((skill, skillIdx) => (
-                  <motion.div
-                    key={skillIdx}
-                    variants={cardVariants}
-                    whileHover={{ scale: 1.05, y: -2 }}
-                    className="px-5 md:px-6 py-3 md:py-3.5 bg-white border border-charcoal/10 hover:border-[#F62440]/40 hover:shadow-lg hover:shadow-[#F62440]/10 rounded-full transition-all duration-300 flex items-center gap-3 group"
-                    data-cursor="pointer"
-                  >
-                    {/* Optional Tech Icon */}
-                    {'icon' in skill && (
-                      <span className="text-xl group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300">
-                        {skill.icon}
-                      </span>
-                    )}
-                    
-                    <span className="text-sm font-semibold text-charcoal group-hover:text-[#F62440] transition-colors duration-300">
-                      {skill.name}
-                    </span>
-                    
-                    {/* Optional details level for soft skills/languages */}
-                    {'level' in skill && (
-                      <span className="text-xs font-medium text-charcoal/50 ml-1 border-l border-charcoal/10 pl-3">
-                        {skill.level}
-                      </span>
-                    )}
-                  </motion.div>
-                ))}
+                <LogoLoop
+                  logos={category.skills.map((skill) => ({
+                    node: (
+                      <div className="px-5 md:px-6 py-3 bg-white border border-charcoal/10 hover:border-[#F62440]/40 hover:shadow-lg hover:shadow-[#F62440]/10 rounded-full transition-all duration-300 flex items-center gap-3 group" data-cursor="pointer">
+                        {'icon' in skill && (
+                          <span className="text-xl group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300">
+                            {skill.icon}
+                          </span>
+                        )}
+                        <span className="text-sm font-semibold text-charcoal group-hover:text-[#F62440] transition-colors duration-300 whitespace-nowrap">
+                          {skill.name}
+                        </span>
+                        {'level' in skill && (
+                          <span className="text-xs font-medium text-charcoal/50 ml-1 border-l border-charcoal/10 pl-3 whitespace-nowrap">
+                            {skill.level}
+                          </span>
+                        )}
+                      </div>
+                    )
+                  }))}
+                  speed={80}
+                  direction={catIdx % 2 === 0 ? 'left' : 'right'}
+                  logoHeight={50}
+                  gap={20}
+                  hoverSpeed={20}
+                  fadeOut={true}
+                />
               </motion.div>
             </div>
           ))}

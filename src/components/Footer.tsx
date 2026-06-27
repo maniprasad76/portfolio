@@ -28,18 +28,20 @@ export const Footer: React.FC = () => {
           <p className="text-xs text-neutral-400 font-medium">
             Designed for impact. Built for remote excellence.
           </p>
-          <p className="text-[10px] text-neutral-500 mt-1 font-semibold uppercase tracking-widest">
-            Crafted by{' '}
+          <div className="flex items-center justify-center gap-3 mt-3">
+            <span className="text-[10px] text-neutral-500 font-medium uppercase tracking-[0.3em]">
+              Crafted by
+            </span>
             <a
               href="https://www.instagram.com/___mani___76/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[#F62440] hover:underline"
+              className="font-signature text-2xl md:text-3xl text-[#F62440] hover:text-white transition-colors duration-300 -rotate-2 hover:rotate-0 inline-block"
               data-cursor="pointer"
             >
-              ___mani___76
+              Mani
             </a>
-          </p>
+          </div>
         </div>
 
         {/* Right Back to Top CTA */}

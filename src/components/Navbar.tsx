@@ -45,8 +45,10 @@ export const Navbar: React.FC = () => {
     const observer = new IntersectionObserver(observerCallback, observerOptions);
 
     NAV_LINKS.forEach((link) => {
-      const el = document.querySelector(link.target);
-      if (el) observer.observe(el);
+      if (!link.isExternal) {
+        const el = document.querySelector(link.target);
+        if (el) observer.observe(el);
+      }
     });
 
     return () => {

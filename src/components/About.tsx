@@ -1,27 +1,27 @@
 import React from 'react';
-import { motion } from 'framer-motion';
-import { Award, Zap, Code, ShieldCheck } from 'lucide-react';
+import { m } from 'framer-motion';
+import { Code, ShieldCheck, Database, Headphones } from 'lucide-react';
 
 const PILLARS = [
   {
-    icon: <Code size={26} />,
-    title: 'Fullstack Development',
-    description: 'Designing interactive React interfaces, type-safe NestJS REST/GraphQL APIs, database integrations, and high-performance Node.js backends.',
+    icon: <Database size={26} />,
+    title: 'Data & Admin',
+    description: 'Expertise in high-speed data entry (35+ WPM), meticulous record keeping, and complex Excel spreadsheet management.',
   },
   {
     icon: <ShieldCheck size={26} />,
-    title: 'Precision & File Integrity',
+    title: 'Precision & Integrity',
     description: 'Maintained 100% accuracy and zero discrepancies across 500+ data entries. Attention to detail is an absolute non-negotiable.',
   },
   {
-    icon: <Zap size={26} />,
-    title: 'Quick Learner & Adaptable',
-    description: 'From Excel formulas to Freshdesk ticket queues, rapidly picking up software suites and operating standards is my second nature.',
+    icon: <Headphones size={26} />,
+    title: 'Customer Support',
+    description: 'Trained in Freshdesk and Zendesk for ticketing, email management, and complaint resolution following standard BPO SOPs.',
   },
   {
-    icon: <Award size={26} />,
-    title: 'Remote Collaboration Ready',
-    description: 'Self-motivated and disciplined. Experienced in managing calendars, organizing Drive files, and professional inbox management.',
+    icon: <Code size={26} />,
+    title: 'Web Dev Fundamentals',
+    description: 'Proficient in HTML5 & CSS3, capable of designing and developing responsive, mobile-friendly static portfolio websites.',
   },
 ];
 
@@ -49,7 +49,7 @@ export const About: React.FC = () => {
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         {/* Section Header */}
         <div className="mb-16 md:mb-20">
-          <motion.p
+          <m.p
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: '-20%' }}
@@ -57,21 +57,21 @@ export const About: React.FC = () => {
             className="text-xs font-bold uppercase tracking-widest text-[#F62440] mb-2"
           >
             My Story
-          </motion.p>
-          <motion.h2
+          </m.p>
+          <m.h2
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-20%' }}
             transition={{ duration: 0.8 }}
             className="text-3xl md:text-5xl font-display font-bold text-[#1B1B1B]"
           >
-            Crafting Digital Experiences, One Detail at a Time
-          </motion.h2>
+            Delivering Accuracy & Excellence in Data and Support
+          </m.h2>
         </div>
 
         {/* Narrative & Storytelling Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start mb-24">
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -79,18 +79,18 @@ export const About: React.FC = () => {
             className="lg:col-span-7 space-y-6 text-charcoal/85 text-base md:text-lg leading-relaxed font-medium"
           >
             <p>
-              I'm a Fullstack Web Developer with a strong passion for modern web engineering. I thrive on the synergy between interactive client-side interfaces and robust, scalable server architectures — building everything from pixel-perfect React UIs to type-safe NestJS API layers backed by PostgreSQL.
+              I am a motivated and detail-oriented BCA student with a demonstrated proficiency in Data Entry, Virtual Assistance, Microsoft Office Suite, Google Workspace, and digital file management.
             </p>
             <p>
-              My engineering focus spans the full stack: component-driven frontends with React and TypeScript, structured REST API design in NestJS, database schema architecture, and automated data pipeline scripting in Node.js. I bring a commitment to precision — whether it's maintaining 100% data integrity across 500+ records or crafting fluid user experiences.
+              My professional focus revolves around maintaining 100% on-time delivery and zero-discrepancy data records across all academic and freelance projects. I am deeply experienced in end-to-end client communication via email and chat, document preparation, scheduling, and structured internet research.
             </p>
             <p>
-              I'm fully equipped for remote team structures, bilingual in English and Telugu, and looking to join a high-performing engineering team where I can ship production software and add immediate value.
+              As a bilingual professional (English and Telugu) with a typing speed of 35+ WPM and a strong eye for accuracy, I am fully equipped for remote team structures. I am seeking a full-time 100% remote / WFH role in Data Entry, Virtual Assistance, Customer Support, or BPO environments where I can add immediate value.
             </p>
-          </motion.div>
+          </m.div>
 
           {/* Core Info Highlights */}
-          <motion.div
+          <m.div
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -108,11 +108,11 @@ export const About: React.FC = () => {
                 </li>
                 <li className="flex justify-between border-b border-neutral-800 pb-2">
                   <span className="font-semibold text-neutral-400">Current Role:</span>
-                  <span>Fullstack Web Developer & BCA Student</span>
+                  <span>BCA Student / VA / BPO</span>
                 </li>
                 <li className="flex justify-between border-b border-neutral-800 pb-2">
-                  <span className="font-semibold text-neutral-400">Tech Stack:</span>
-                  <span className="text-[#F62440] font-semibold">React, NestJS, Node, TS, SQL</span>
+                  <span className="font-semibold text-neutral-400">Key Skills:</span>
+                  <span className="text-[#F62440] font-semibold text-right">Data Entry, Office, HTML/CSS</span>
                 </li>
                 <li className="flex justify-between border-b border-neutral-800 pb-2">
                   <span className="font-semibold text-neutral-400">Availability:</span>
@@ -135,7 +135,7 @@ export const About: React.FC = () => {
                 <span className="group-hover:translate-x-1.5 transition-transform duration-300">→</span>
               </a>
             </div>
-          </motion.div>
+          </m.div>
         </div>
 
         {/* Pillars / Work Ethic Cards */}
@@ -147,7 +147,7 @@ export const About: React.FC = () => {
             <p className="text-sm text-charcoal/65 mt-2">The fundamentals driving my daily execution</p>
           </div>
 
-          <motion.div
+          <m.div
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
@@ -155,7 +155,7 @@ export const About: React.FC = () => {
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
           >
             {PILLARS.map((pillar, i) => (
-              <motion.div
+              <m.div
                 key={i}
                 variants={cardVariants}
                 className="bg-white p-8 md:p-10 rounded-3xl shadow-[0_4px_20px_rgb(0,0,0,0.03)] hover:shadow-[0_8px_30px_rgb(246,36,64,0.08)] hover:-translate-y-2 transition-all duration-500 border border-neutral-100 flex flex-col group relative overflow-hidden"
@@ -177,9 +177,9 @@ export const About: React.FC = () => {
                     {pillar.description}
                   </p>
                 </div>
-              </motion.div>
+              </m.div>
             ))}
-          </motion.div>
+          </m.div>
         </div>
       </div>
     </section>

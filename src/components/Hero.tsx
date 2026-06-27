@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
+import { m, AnimatePresence, useReducedMotion } from 'framer-motion';
 import { Mail, Briefcase, Download } from 'lucide-react';
 import { MagneticButton } from './MagneticButton';
 
 const ROLES = [
-  'Fullstack Web Developer',
-  'React & NestJS Specialist',
-  'TypeScript & Node.js Engineer',
+  'Data Entry Specialist',
+  'Virtual Assistant',
+  'Customer Support',
+  'BPO Executive',
+  'BCA Student'
 ];
 
 export const Hero: React.FC = () => {
@@ -36,7 +38,7 @@ export const Hero: React.FC = () => {
     >
       {/* Decorative Interactive Background Elements */}
       <div className="absolute inset-0 z-0 pointer-events-none select-none" aria-hidden="true">
-        <motion.div
+        <m.div
           animate={shouldReduceMotion ? {} : {
             x: [0, 40, -20, 0],
             y: [0, -30, 40, 0],
@@ -45,7 +47,7 @@ export const Hero: React.FC = () => {
           className="absolute top-1/4 left-[10%] w-72 h-72 rounded-full filter blur-3xl"
           style={{ backgroundColor: 'rgba(246, 36, 64, 0.06)' }}
         />
-        <motion.div
+        <m.div
           animate={shouldReduceMotion ? {} : {
             x: [0, -30, 30, 0],
             y: [0, 40, -40, 0],
@@ -59,7 +61,7 @@ export const Hero: React.FC = () => {
       {/* Main Hero Content */}
       <div className="max-w-5xl w-full text-center z-10 flex flex-col items-center px-6">
         {/* Animated Greeting */}
-        <motion.div
+        <m.div
           initial={shouldReduceMotion ? {} : { opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
@@ -69,18 +71,18 @@ export const Hero: React.FC = () => {
           <span className="text-xs md:text-sm font-semibold uppercase tracking-widest text-dark">
             Available for remote roles
           </span>
-        </motion.div>
+        </m.div>
 
         {/* User Name */}
-        <h1 className="text-5xl md:text-8xl font-display font-bold tracking-tight text-dark leading-none mb-6">
-          <motion.span
+        <h1 className="text-4xl sm:text-5xl md:text-8xl font-display font-bold tracking-tight text-dark leading-none mb-6">
+          <m.span
             initial={shouldReduceMotion ? {} : { opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
             className="block"
           >
             BASA PRASAD
-          </motion.span>
+          </m.span>
         </h1>
 
         {/* Rotating Roles Container */}
@@ -91,7 +93,7 @@ export const Hero: React.FC = () => {
           role="status"
         >
           <AnimatePresence mode="wait">
-            <motion.div
+            <m.div
               key={roleIndex}
               initial={shouldReduceMotion ? {} : { y: 35, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
@@ -100,12 +102,12 @@ export const Hero: React.FC = () => {
               className="text-xl md:text-3xl font-display font-medium text-accent tracking-wide"
             >
               {ROLES[roleIndex]}
-            </motion.div>
+            </m.div>
           </AnimatePresence>
         </div>
 
         {/* Personal Intro — Engineering-first positioning */}
-        <motion.p
+        <m.p
           initial={shouldReduceMotion ? {} : { opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.5 }}
@@ -114,20 +116,20 @@ export const Hero: React.FC = () => {
           I build production-grade web applications with React and NestJS — type-safe, 
           scalable, and performance-obsessed. Currently seeking remote opportunities 
           where clean architecture meets real-world impact.
-        </motion.p>
+        </m.p>
 
         {/* CTA Buttons */}
-        <motion.div
+        <m.div
           initial={shouldReduceMotion ? {} : { opacity: 0, y: 25 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="flex flex-wrap items-center justify-center gap-4 md:gap-6"
+          className="flex flex-col sm:flex-row items-center justify-center gap-4 md:gap-6 w-full sm:w-auto px-4 sm:px-0"
         >
           <MagneticButton>
             <a
               href="#projects"
               onClick={(e) => scrollToSection(e, '#projects')}
-              className="flex items-center gap-2 px-8 py-4 bg-accent text-cream rounded-full text-sm font-semibold uppercase tracking-wider shadow-lg hover:shadow-xl hover:bg-dark transition-all duration-300"
+              className="flex items-center justify-center gap-2 px-8 py-4 bg-accent text-cream rounded-full text-sm font-semibold uppercase tracking-wider shadow-lg hover:shadow-xl hover:bg-dark transition-all duration-300 w-full sm:w-auto"
               data-cursor="pointer"
             >
               <Briefcase size={16} />
@@ -139,7 +141,7 @@ export const Hero: React.FC = () => {
             <a
               href="#contact"
               onClick={(e) => scrollToSection(e, '#contact')}
-              className="flex items-center gap-2 px-8 py-4 border-2 border-dark text-dark rounded-full text-sm font-semibold uppercase tracking-wider hover:bg-dark hover:text-cream transition-all duration-300"
+              className="flex items-center justify-center gap-2 px-8 py-4 border-2 border-dark text-dark rounded-full text-sm font-semibold uppercase tracking-wider hover:bg-dark hover:text-cream transition-all duration-300 w-full sm:w-auto"
               data-cursor="pointer"
             >
               <Mail size={16} />
@@ -151,14 +153,14 @@ export const Hero: React.FC = () => {
             <a
               href="#resume"
               onClick={(e) => scrollToSection(e, '#resume')}
-              className="flex items-center gap-2 px-8 py-4 border-2 border-charcoal/10 text-charcoal/70 rounded-full text-sm font-semibold uppercase tracking-wider hover:bg-dark hover:text-cream hover:border-dark transition-all duration-300"
+              className="flex items-center justify-center gap-2 px-8 py-4 border-2 border-charcoal/10 text-charcoal/70 rounded-full text-sm font-semibold uppercase tracking-wider hover:bg-dark hover:text-cream hover:border-dark transition-all duration-300 w-full sm:w-auto"
               data-cursor="pointer"
             >
               <Download size={16} />
               Resume
             </a>
           </MagneticButton>
-        </motion.div>
+        </m.div>
       </div>
 
 

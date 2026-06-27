@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { Mail, MessageCircle, Send, CheckCircle } from 'lucide-react';
 import { FaLinkedin, FaGithub, FaInstagram } from 'react-icons/fa6';
 import { MagneticButton } from './MagneticButton';
@@ -41,7 +41,7 @@ export const Contact: React.FC = () => {
       <div className="max-w-5xl mx-auto px-6 md:px-12">
         {/* Section Header */}
         <div className="mb-16 md:mb-20 text-center">
-          <motion.p
+          <m.p
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -49,8 +49,8 @@ export const Contact: React.FC = () => {
             className="text-xs font-bold uppercase tracking-widest text-accent mb-2"
           >
             Get In Touch
-          </motion.p>
-          <motion.h2
+          </m.p>
+          <m.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -58,10 +58,10 @@ export const Contact: React.FC = () => {
             className="text-3xl md:text-5xl font-display font-bold text-dark"
           >
             Let's Build Something Together
-          </motion.h2>
+          </m.h2>
         </div>
 
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -177,7 +177,7 @@ export const Contact: React.FC = () => {
                 <a
                   href={`https://wa.me/${import.meta.env.VITE_PHONE_NUMBER || '917569428709'}`}
                   target="_blank"
-                  rel="noreferrer"
+                  rel="noopener noreferrer"
                   className="flex items-center gap-4 px-6 py-4 bg-cream border border-charcoal/5 rounded-xl hover:border-accent/30 hover:shadow-md transition-all duration-300 group w-full"
                   data-cursor="pointer"
                 >
@@ -207,7 +207,7 @@ export const Contact: React.FC = () => {
                     <a
                       href={social.url}
                       target="_blank"
-                      rel="noreferrer"
+                      rel="noopener noreferrer"
                       aria-label={social.label}
                       className="w-12 h-12 bg-charcoal/5 rounded-full flex items-center justify-center text-dark hover:bg-accent hover:text-cream transition-all duration-300"
                       data-cursor="pointer"
@@ -231,7 +231,7 @@ export const Contact: React.FC = () => {
               </p>
             </div>
           </div>
-        </motion.div>
+        </m.div>
       </div>
     </section>
   );

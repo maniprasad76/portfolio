@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { m, AnimatePresence } from 'framer-motion';
 import { Menu, X } from "lucide-react";
 import { MagneticButton } from "./MagneticButton";
 
@@ -101,11 +101,8 @@ export const Navbar: React.FC = () => {
             data-cursor="pointer"
             aria-label="Basa Prasad - Home"
           >
-            <div className="w-9 h-9 bg-dark text-cream rounded-xl flex items-center justify-center group-hover:bg-accent transition-colors duration-300 shadow-sm">
-              <span className="font-display font-bold text-lg leading-none pt-0.5">P</span>
-            </div>
-            <span className="font-display font-bold text-xl tracking-wider text-dark">
-              PRASAD
+            <span className="font-signature font-bold text-3xl tracking-wide text-dark pt-1">
+              Prasad
             </span>
           </a>
 
@@ -133,7 +130,7 @@ export const Navbar: React.FC = () => {
                   </span>
                   {/* Backdrop highlight for active */}
                   {isActive && (
-                    <motion.span
+                    <m.span
                       layoutId="activeNavBg"
                       className="absolute inset-0 bg-accent rounded-full z-0"
                       transition={{
@@ -181,7 +178,7 @@ export const Navbar: React.FC = () => {
       {/* Mobile Menu Overlay */}
       <AnimatePresence>
         {isMobileMenuOpen && (
-          <motion.div
+          <m.div
             id="mobile-menu"
             role="dialog"
             aria-label="Navigation menu"
@@ -195,7 +192,7 @@ export const Navbar: React.FC = () => {
               {NAV_LINKS.map((link, i) => {
                 const isActive = activeSection === link.target.substring(1);
                 return (
-                  <motion.a
+                  <m.a
                     initial={{ opacity: 0, y: 15 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: i * 0.05 }}
@@ -208,12 +205,12 @@ export const Navbar: React.FC = () => {
                     aria-current={isActive ? "true" : undefined}
                   >
                     {link.label}
-                  </motion.a>
+                  </m.a>
                 );
               })}
             </nav>
 
-            <motion.div
+            <m.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.4 }}
@@ -225,8 +222,8 @@ export const Navbar: React.FC = () => {
               >
                 basaprasad76@gmail.com
               </a>
-            </motion.div>
-          </motion.div>
+            </m.div>
+          </m.div>
         )}
       </AnimatePresence>
     </>

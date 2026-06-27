@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 
 interface MagneticButtonProps {
   children: React.ReactNode;
@@ -30,7 +30,7 @@ export const MagneticButton: React.FC<MagneticButtonProps> = ({ children, classN
   };
 
   return (
-    <motion.div
+    <m.div
       ref={ref}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
@@ -42,7 +42,7 @@ export const MagneticButton: React.FC<MagneticButtonProps> = ({ children, classN
       data-cursor="magnetic"
     >
       {children}
-    </motion.div>
+    </m.div>
   );
 };
 export default MagneticButton;

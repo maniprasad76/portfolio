@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m, AnimatePresence } from 'framer-motion';
 
 const GREETINGS = [
   'Hello',         // English
@@ -49,7 +49,7 @@ export const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
   return (
     <AnimatePresence>
       {!isLoaderFinished && (
-        <motion.div
+        <m.div
           className="fixed inset-0 bg-dark z-[99999] flex items-center justify-center"
           exit={{
             y: '-100vh',
@@ -64,7 +64,7 @@ export const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
         >
           {/* Main Greeting Text */}
           <div className="text-center relative">
-            <motion.p
+            <m.p
               key={index}
               initial={{ y: 30, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
@@ -77,11 +77,11 @@ export const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
                 {GREETINGS[index]}
               </span>
               <span className="inline-block w-2.5 h-2.5 bg-accent rounded-full" aria-hidden="true" />
-            </motion.p>
+            </m.p>
 
             {/* Subtle progress indicator */}
             <div className="absolute top-20 left-1/2 -translate-x-1/2 w-32 h-[1px] bg-neutral-800">
-              <motion.div
+              <m.div
                 className="h-full bg-accent"
                 initial={{ width: '0%' }}
                 animate={{ width: `${((index + 1) / GREETINGS.length) * 100}%` }}
@@ -90,16 +90,16 @@ export const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
             </div>
 
             {/* Skip hint */}
-            <motion.p
+            <m.p
               initial={{ opacity: 0 }}
               animate={{ opacity: 0.3 }}
               transition={{ delay: 0.5 }}
               className="absolute top-32 left-1/2 -translate-x-1/2 text-neutral-500 text-xs tracking-widest uppercase whitespace-nowrap"
             >
               Click or press Enter to skip
-            </motion.p>
+            </m.p>
           </div>
-        </motion.div>
+        </m.div>
       )}
     </AnimatePresence>
   );

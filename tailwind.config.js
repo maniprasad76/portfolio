@@ -17,6 +17,7 @@ export default {
       fontFamily: {
         sans: ["Satoshi", "Inter", "sans-serif"],
         display: ["Clash Display", "sans-serif"],
+        signature: ['"Dancing Script"', "cursive"],
       },
       animation: {
         'spin-slow': 'spin 12s linear infinite',

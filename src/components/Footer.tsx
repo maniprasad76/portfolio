@@ -14,11 +14,8 @@ export const Footer: React.FC = () => {
         {/* Left Branding */}
         <div>
           <div className="flex items-center gap-2.5 mb-1">
-            <div className="w-8 h-8 bg-[#F62440] text-white rounded-lg flex items-center justify-center shadow-sm">
-              <span className="font-display font-bold text-base leading-none pt-0.5">P</span>
-            </div>
-            <span className="font-display font-bold text-xl tracking-wider text-[#FFFAF3]">
-              PRASAD
+            <span className="font-signature font-bold text-3xl tracking-wide text-[#FFFAF3] pt-1">
+              Prasad
             </span>
           </div>
           <p className="text-[10px] text-neutral-500 mt-1 uppercase tracking-widest font-semibold">
@@ -36,7 +33,7 @@ export const Footer: React.FC = () => {
             <a
               href="https://www.instagram.com/___mani___76/"
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               className="text-[#F62440] hover:underline"
               data-cursor="pointer"
             >

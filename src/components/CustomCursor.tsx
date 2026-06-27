@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { motion, useMotionValue, useSpring } from 'framer-motion';
+import { m, useMotionValue, useSpring } from 'framer-motion';
 
 export const CustomCursor: React.FC = () => {
   const [cursorType, setCursorType] = useState<'default' | 'hover' | 'view' | 'click'>('default');
@@ -102,11 +102,11 @@ export const CustomCursor: React.FC = () => {
   return (
     <>
       {/* Trailing spring cursor ring */}
-      <motion.div
+      <m.div
         className="fixed top-0 left-0 pointer-events-none z-[9999] hidden md:flex"
         style={{ x: cursorX, y: cursorY }}
       >
-        <motion.div
+        <m.div
           className="absolute top-0 left-0 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center rounded-full"
           animate={cursorType}
           variants={cursorVariants}
@@ -117,22 +117,22 @@ export const CustomCursor: React.FC = () => {
               {hoverText}
             </span>
           )}
-        </motion.div>
-      </motion.div>
+        </m.div>
+      </m.div>
 
       {/* Inner pinpoint dot */}
-      <motion.div
+      <m.div
         className="fixed top-0 left-0 pointer-events-none z-[10000] hidden md:block"
         style={{ x: mouseX, y: mouseY }}
       >
-        <motion.div
+        <m.div
           className="absolute top-0 left-0 w-1.5 h-1.5 bg-[#F62440] rounded-full -translate-x-1/2 -translate-y-1/2"
           animate={{
             scale: cursorType === 'view' || cursorType === 'hover' ? 0 : 1,
           }}
           transition={{ duration: 0.15 }}
         />
-      </motion.div>
+      </m.div>
     </>
   );
 };

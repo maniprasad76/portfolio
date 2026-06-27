@@ -8,6 +8,7 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import ScrollProgress from './components/ScrollProgress';
 import ErrorBoundary from './components/ErrorBoundary';
+import { LazyMotion, domAnimation } from 'framer-motion';
 
 // Lazy-load below-the-fold sections for better performance
 const CurvedLoop = lazy(() => import('./components/CurvedLoop'));
@@ -31,7 +32,8 @@ function App() {
   const [isLoading, setIsLoading] = useState(true);
 
   return (
-    <ErrorBoundary>
+    <LazyMotion features={domAnimation}>
+      <ErrorBoundary>
       {/* Accessible skip-to-content link */}
       <a href="#main-content" className="skip-to-content">
         Skip to main content
@@ -65,7 +67,7 @@ function App() {
               <Suspense fallback={<SectionFallback />}>
                 <div className="bg-cream -mt-12 md:-mt-20 relative z-10 overflow-hidden">
                   <CurvedLoop 
-                    marqueeText="FULLSTACK WEB DEVELOPER ✦ REACT ✦ NESTJS ✦ NODE.JS ✦ TYPESCRIPT ✦ SQL ✦ " 
+                    marqueeText="DATA ENTRY ✦ VIRTUAL ASSISTANCE ✦ CUSTOMER SUPPORT ✦ BPO EXECUTIVE ✦ BCA STUDENT ✦ HTML5/CSS3 ✦ " 
                     speed={1.5} 
                     curveAmount={150} 
                     interactive={true} 
@@ -89,7 +91,8 @@ function App() {
           </div>
         </SmoothScroll>
       )}
-    </ErrorBoundary>
+      </ErrorBoundary>
+    </LazyMotion>
   );
 }
 

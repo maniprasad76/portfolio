@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { FaLinkedin, FaGithub, FaWhatsapp, FaInstagram } from 'react-icons/fa6';
 import { Mail } from 'lucide-react';
 import { MagneticButton } from './MagneticButton';
@@ -39,7 +39,7 @@ const SOCIALS = [
 
 export const FloatingSocials: React.FC = () => {
   return (
-    <motion.div
+    <m.div
       initial={{ opacity: 0, x: 50 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ delay: 2.5, duration: 0.8, ease: [0.25, 1, 0.5, 1] }}
@@ -55,7 +55,7 @@ export const FloatingSocials: React.FC = () => {
             <a
               href={social.url}
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               aria-label={social.label}
               className="w-10 h-10 rounded-full flex items-center justify-center text-charcoal/70 hover:bg-[#F62440] hover:text-[#FFFAF3] transition-all duration-300 relative group"
               data-cursor="magnetic"
@@ -73,7 +73,7 @@ export const FloatingSocials: React.FC = () => {
 
       {/* Decorative vertical line */}
       <div className="w-[1px] h-12 bg-charcoal/10 mt-4" />
-    </motion.div>
+    </m.div>
   );
 };
 

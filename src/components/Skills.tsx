@@ -79,14 +79,6 @@ export const Skills: React.FC = () => {
     },
   };
 
-  const cardVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.6, ease: 'easeOut' as const },
-    },
-  };
 
   return (
     <section id="skills" className="py-24 md:py-32 bg-[#FFFAF3] relative border-t border-charcoal/5">

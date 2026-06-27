@@ -6,6 +6,7 @@ import FloatingParticles from './components/FloatingParticles';
 import FloatingSocials from './components/FloatingSocials';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
+import CurvedLoop from './components/CurvedLoop';
 import About from './components/About';
 import Skills from './components/Skills';
 import Projects from './components/Projects';
@@ -42,6 +43,15 @@ function App() {
             {/* Content Sections */}
             <main>
               <Hero />
+              <div className="bg-[#FFFAF3] -mt-12 md:-mt-20 relative z-10 overflow-hidden">
+                <CurvedLoop 
+                  marqueeText="FULLSTACK WEB DEVELOPER ✦ REACT ✦ NESTJS ✦ NODE.JS ✦ TYPESCRIPT ✦ SQL ✦ " 
+                  speed={1.5} 
+                  curveAmount={150} 
+                  interactive={true} 
+                  className="text-[#F62440]" 
+                />
+              </div>
               <About />
               <Skills />
               <Projects />
